@@ -1,14 +1,19 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <div v-for="Item in store.movies" class="col-3">
+    
+    <SingleItem :Item = Item></SingleItem>
+    </div>
+  </div>
 </template>
 
 <script>
 // importazione componente singola card
 
-import SingleItem from "./components/SingleItem.vue";
+import SingleItem from "./SingleItem.vue";
 
 // importazione del file degli array
-import { store ,FetchMoviesData, FetchSeriesData } from "./store";
+import { store, FetchMoviesData, FetchSeriesData } from "./store";
 export default {
   // componente esterno card singola
   components: { SingleItem },
@@ -19,7 +24,7 @@ export default {
   },
   created() {
     FetchMoviesData();
-    FetchSeriesData()
+    FetchSeriesData();
   },
 };
 </script>

@@ -8,14 +8,16 @@
             <input
               type="text"
               class="form-control"
-              name="name"
-              placeholder="Inserisci il nome del film o della serieTV"
+              name="Titolo"
+              placeholder="Inserisci il titolo del film o della serieTV"
               v-model="filters.Title"
             />
           </div>
         </div>
 
-        <button class="btn btn-info">Cerca</button>
+        <div class="d-flex gap-3 justify-content-center">
+          <button class="btn btn-info">Cerca</button>
+        </div>
       </div>
     </form>
   </div>
@@ -32,7 +34,7 @@ export default {
   },
   methods: {
     SearchClick() {
-      this.$emit("search", { ...this.filters });
+      this.$emit("performSearch", { ...this.filters });
     },
   },
 };

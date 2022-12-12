@@ -5,7 +5,7 @@ import TheHeader from "./components/TheHeader.vue";
 import TheMain from "./components/TheMain.vue";
 
 // importo file esterno con i dati
-import { store } from "./store";
+import { store } from "./components/store";
 
 export default {
   components: { TheHeader, TheMain },
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <template>
-  <TheHeader @search="SearchTitle"></TheHeader>
+  <TheHeader @performSearch="SearchTitle"></TheHeader>
   <TheMain></TheMain>
 </template>
 
