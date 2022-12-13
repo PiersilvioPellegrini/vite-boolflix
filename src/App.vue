@@ -1,33 +1,24 @@
 <script>
 // import Componente from './components/Componente';
-import TheHeader from "./components/TheHeader.vue";
-
+import TheNavBar from "./components/TheNavBar.vue"
 import TheMain from "./components/TheMain.vue";
 
 // importo file esterno con i dati
-import { store } from "./components/store";
+import { store} from "./store";
 
 export default {
-  components: { TheHeader, TheMain },
+  components: { TheMain, TheNavBar },
   data() {
     return {
       store,
     };
   },
-  methods: {
-    SearchTitle(filtersEmitted) {
-      this.store.Filters = filtersEmitted;
-      FetchMoviesData();
-      FetchSeriesData();
-
-      console.log(filtersEmitted);
-    },
-  },
 };
 </script>
 
 <template>
-  <TheHeader @performSearch="SearchTitle"></TheHeader>
+  <TheNavBar></TheNavBar>
+  
   <TheMain></TheMain>
 </template>
 
