@@ -1,32 +1,27 @@
 <template>
-  
-      <nav>
-        <div class="container">
-            <div class="contentNav">
-                <div class="logoSide">
-                    <img src="../../public/logo.jpg" alt="">
-                </div>
-                <div class="searchSide">
-                    <TheSearchBar @performSearch="SearchTitle"></TheSearchBar>
-                </div>
-            </div>
-
+  <nav>
+    <div class="container">
+      <div class="contentNav">
+        <div class="logoSide">
+          <img src="../../public/logo.jpg" alt="" />
         </div>
-        
-
-    </nav>
-
+        <div class="searchSide">
+          <TheSearchBar @performSearch="SearchTitle"></TheSearchBar>
+        </div>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
 import TheSearchBar from "./TheSearchBar.vue";
-import { store, FetchMoviesData ,FetchSeriesData  } from "../store";
+import { store, FetchMoviesData, FetchSeriesData } from "../store";
 export default {
-      // componente esterno card 
+  // componente esterno card
   components: { TheSearchBar },
   data() {
     return {
-      store
+      store,
     };
   },
   methods: {
@@ -34,39 +29,37 @@ export default {
       this.store.Filters = filtersEmitted;
       FetchMoviesData();
       FetchSeriesData();
+      this.store.generateItems = true;
+      if (filtersEmitted === "") {
+        this.store.generateItems = false;
+      }
 
       console.log(filtersEmitted);
     },
   },
-  
 };
 </script>
 
 <style scoped lang="scss">
+nav {
+  background-color: black;
+  color: white;
 
-nav{
-    background-color: black;
-    color: white;
+  .contentNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    .contentNav{
-        display:flex;
-        align-items: center;
-        justify-content: space-between;
+  .logoSide {
+    img {
+      height: 100px;
+      aspect-ratio: 16/9;
     }
+  }
 
-    .logoSide{
-
-        img{
-            height: 100px;
-            aspect-ratio: 16/9;   
-        }
-    }
-
-    .searchSide{
-        padding: 10px;
-    }
+  .searchSide {
+    padding: 10px;
+  }
 }
-
-
-
 </style>

@@ -6,6 +6,10 @@ export const store = reactive({
   movies: {},
   series: {},
   Filters: {},
+  generateItems:false,
+
+  // title: false,
+  
 });
 
 export function FetchMoviesData() {
@@ -26,7 +30,7 @@ export function FetchMoviesData() {
 
       // Assegno il valore alla variabile del data charactersList
       store.movies = resp.data.results;
-      
+      // store.title= true;
 
       console.log(store);
     })
@@ -68,6 +72,8 @@ export function FetchSeriesData() {
       // error contiene un istanza di AxiosError dalla quale posso estrarre varie
       // informazioni sull'errore avvenuto
       console.log(error);
+      store.generateItems = false;
+     
 
       // Codice HTTP dell'errore
       console.log("Codice errore: ", error.response.status);

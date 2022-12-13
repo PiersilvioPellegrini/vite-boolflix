@@ -34,6 +34,7 @@ export default {
   methods: {
     SearchClick() {
       this.$emit("performSearch", { ...this.filters });
+      
     },
   },
 };

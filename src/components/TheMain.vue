@@ -1,8 +1,20 @@
 <template>
   <div class="container">
-    <div v-for="Item in store.movies" class="col-3">
-    
-    <SingleItem :Item = Item></SingleItem>
+    <div class="Movies">
+      <div class="row">
+        <h2 v-if="store.generateItems">Movies</h2>
+        <div v-for="Item in store.movies" class="col-2">
+          <SingleItem :Item="Item"></SingleItem>
+        </div>
+      </div>
+    </div>
+    <div class="Series">
+      <div class="row">
+        <h2 v-if="store.generateItems">Series</h2>
+        <div v-for="Item in store.series" class="col-2">
+          <SingleItem :Item="Item"></SingleItem>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -20,23 +32,24 @@ export default {
   data() {
     return {
       store,
-      
     };
   },
-    
 };
 </script>
 
 <style scoped lang="scss">
-
-.container{
+.container {
   margin-top: 30px;
-  
-  .cards{
-    display: flex;
-    flex-wrap: wrap;
+
+  h2{
+    display:flex;
+    justify-content:center;
+    padding: 40px 0px;
+    color: white;
+  }
+
+  .row {
+    row-gap: 20px;
   }
 }
-
-
 </style>
