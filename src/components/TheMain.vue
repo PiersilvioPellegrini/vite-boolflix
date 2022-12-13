@@ -13,20 +13,30 @@
 import SingleItem from "./SingleItem.vue";
 
 // importazione del file degli array
-import { store, FetchMoviesData, FetchSeriesData } from "./store";
+import { store } from "../store";
 export default {
   // componente esterno card singola
   components: { SingleItem },
   data() {
     return {
       store,
+      
     };
   },
-  created() {
-    FetchMoviesData();
-    FetchSeriesData();
-  },
+    
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+.container{
+  margin-top: 30px;
+  
+  .cards{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+
+</style>

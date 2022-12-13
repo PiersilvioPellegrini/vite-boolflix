@@ -3,9 +3,9 @@ import axios from "axios";
 
 export const store = reactive({
   // array che contiene i dati delle card
-  movies: [],
+  movies: {},
   series: {},
-  Filters: null,
+  Filters: {},
 });
 
 export function FetchMoviesData() {
@@ -16,7 +16,7 @@ export function FetchMoviesData() {
       // Query string nell'url finale
       params: {
         api_key: "c5ee24a319cbde73da0037547990581a",
-        query:""
+        query: store.Filters.Title,
 
       }
     })
@@ -45,11 +45,11 @@ export function FetchSeriesData() {
     const rootUrl = "https://api.themoviedb.org/3";
 
   axios
-    .get(rootUrl + "/search/series", {
+    .get(rootUrl + "/search/tv", {
       // Query string nell'url finale
       params: {
         api_key: "c5ee24a319cbde73da0037547990581a",
-        query:""
+        query: store.Filters.Title,
 
       }
     })

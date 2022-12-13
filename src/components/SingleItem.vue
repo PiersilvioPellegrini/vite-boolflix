@@ -1,6 +1,13 @@
 <template>
-    <ul>
+    
+    <img :src="CreateUrlImageItem" alt="">
+    <ul> 
         <li>{{Item.title}}</li>
+        <li>{{Item.id}}</li>
+        <li>{{Item.original_title}}</li>
+        <li>{{Item.vote_average}}</li>
+        <li>{{Item.original_language}}</li>
+        
     </ul>
 </template>
 <script>
@@ -23,8 +30,18 @@ export default {
       },
     },
     data() {
-      return {};
+      return {
+        sizeImageItem:"w342",
+        rootUrl: "https://image.tmdb.org/t/p/",
+        
+      };
+
     },
+    computed:{
+      CreateUrlImageItem(){
+        return `${this.rootUrl}${this.sizeImageItem}${this.Item.poster_path}`
+      }
+    }
     
   };
   </script>
