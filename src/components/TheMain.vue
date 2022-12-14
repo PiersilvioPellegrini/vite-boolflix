@@ -3,7 +3,7 @@
     <div class="Movies">
       <div class="row">
         <h2 v-if="store.generateItems">Movies</h2>
-        <div v-for="Item in store.movies" class="col-2">
+        <div v-for="Item in store.movies" class="col-3">
           <SingleItem :Item="Item"></SingleItem>
         </div>
       </div>
@@ -11,7 +11,7 @@
     <div class="Series">
       <div class="row">
         <h2 v-if="store.generateItems">Series</h2>
-        <div v-for="Item in store.series" class="col-2">
+        <div v-for="Item in store.series" class="col-3">
           <SingleItem :Item="Item"></SingleItem>
         </div>
       </div>
