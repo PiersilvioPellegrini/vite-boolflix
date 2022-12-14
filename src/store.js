@@ -2,13 +2,13 @@ import { reactive } from "vue";
 import axios from "axios";
 
 export const store = reactive({
-  // array che contiene i dati delle card
+  
   movies: {},
   series: {},
   Filters: {},
   generateItems:false,
 
-  // title: false,
+  
   
 });
 

@@ -1,26 +1,37 @@
 <template>
   <div class="card">
+    <!-- se l'immagine è presnete la mostra  -->
     <img v-if="Item.poster_path" :src="CreateUrlImageItem" alt="" />
+    <!-- altrimenti ne mostro una mia standard -->
     <img  v-else src="../../public/mine.jpg" alt="">
+
+    <!-- info del film in :hover -->
     <div class="infoItem">
       <ul>
         <li>
-          <h2>
+          <h2 class="pt-2">
+            <!-- se il valore è presente o ha un valore inserisce Title, altrimenti inserisci Name -->
             <template v-if="!Item.title">{{ Item.name }}</template>
             <template v-else> {{ Item.title }}</template>
           </h2>
         </li>
+        <!-- se il ha la descrizione la inserisce -->
         <li v-if="Item.overview">{{ Item.overview }}</li>
+        <!-- altimenti mostra testo mio -->
         <li v-else>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repellendus aliquid vero officia rerum, facilis fugiat illo impedit? Fuga, voluptatibus. Error, aut! Mollitia hic magni eveniet, quo veniam molestiae dolorem!</li>
         
         
       </ul>
+      <!-- bandierina -->
       <div class="bandiera mb-3">
         LANGUAGE:
         <img class="ps-2" :src="CreatedUrlBandiera" alt="" />
       </div>
+      <!-- stelline -->
       <div class="Vote ps-2">
         RATING:
+        <!-- cicla sulla funzione CREATESTARS -->
+        <!-- la I rappresnta il numero di stelline da creare  -->
         <i class="fa-solid fa-star ps-1" v-for="i in createStars"></i>
         
       </div>
@@ -51,9 +62,12 @@ export default {
   },
   data() {
     return {
+      // immagine copertina
       sizeImageItem: "w342",
       rootUrl: "https://image.tmdb.org/t/p/",
 
+
+      // bandierine
       rootBandiera: "https://flagcdn.com/",
       sizeBandiera: "20x15/",
       finalBandiera: ".png",
@@ -61,11 +75,14 @@ export default {
     };
   },
   computed: {
+    // funzione che crea l'immagine della copertina 
     CreateUrlImageItem() {
       return `${this.rootUrl}${this.sizeImageItem}${this.Item.poster_path}`;
     },
 
+    // funzione che crea la bandiera in pase alla lingua del film
     CreatedUrlBandiera() {
+      // cambio i valori di alcune lingue per fare visualizzare corretamente le bandiere
       if(this.Item.original_language === "en"){
         this.Item.original_language = "gb"
         return `${this.rootBandiera}${this.sizeBandiera}${this.Item.original_language}${this.finalBandiera}`;
@@ -93,6 +110,7 @@ export default {
       }
       },
 
+      // funzione che crea le stelline in base al rating del film 
       createStars(){
         let vote = this.Item.vote_average;
         vote = vote/2;
